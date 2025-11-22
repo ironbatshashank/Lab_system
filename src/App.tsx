@@ -17,6 +17,13 @@ import { SupervisorReview } from './pages/SupervisorReview';
 import { HSMReview } from './pages/HSMReview';
 import { TechnicianReview } from './pages/TechnicianReview';
 import { AllProjects } from './pages/AllProjects';
+import { ClientRequests } from './pages/ClientRequests';
+import { MyProjects } from './pages/MyProjects';
+import { ReviewsList } from './pages/ReviewsList';
+import { Quality } from './pages/Quality';
+import { MyRequests } from './pages/MyRequests';
+import { CreateRequest } from './pages/CreateRequest';
+import { Messages } from './pages/Messages';
 
 function App() {
   return (
@@ -152,6 +159,105 @@ function App() {
                 <ProtectedRoute allowedRoles={['lab_technician']}>
                   <Layout>
                     <TechnicianReview />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/reviews/supervisor"
+              element={
+                <ProtectedRoute allowedRoles={['supervisor']}>
+                  <Layout>
+                    <ReviewsList role="supervisor" />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/reviews/hsm"
+              element={
+                <ProtectedRoute allowedRoles={['hsm']}>
+                  <Layout>
+                    <ReviewsList role="hsm" />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/reviews/technician"
+              element={
+                <ProtectedRoute allowedRoles={['lab_technician']}>
+                  <Layout>
+                    <ReviewsList role="lab_technician" />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/client-requests"
+              element={
+                <ProtectedRoute allowedRoles={['lab_director', 'account_manager']}>
+                  <Layout>
+                    <ClientRequests />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/my-projects"
+              element={
+                <ProtectedRoute allowedRoles={['engineer']}>
+                  <Layout>
+                    <MyProjects />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/quality"
+              element={
+                <ProtectedRoute allowedRoles={['quality_manager']}>
+                  <Layout>
+                    <Quality />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/my-requests"
+              element={
+                <ProtectedRoute allowedRoles={['external_client']}>
+                  <Layout>
+                    <MyRequests />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/requests/new"
+              element={
+                <ProtectedRoute allowedRoles={['external_client']}>
+                  <Layout>
+                    <CreateRequest />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/messages"
+              element={
+                <ProtectedRoute allowedRoles={['account_manager', 'lab_director']}>
+                  <Layout>
+                    <Messages />
                   </Layout>
                 </ProtectedRoute>
               }
