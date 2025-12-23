@@ -1,13 +1,15 @@
-import { SelectHTMLAttributes, forwardRef } from 'react';
+import { SelectHTMLAttributes, forwardRef, ReactNode } from 'react';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
-  options: { value: string; label: string }[];
+  helpText?: string;
+  options?: { value: string; label: string }[];
+  children?: ReactNode;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ label, error, options, className = '', ...props }, ref) => {
+  ({ label, error, helpText, options, children, className = '', ...props }, ref) => {
     return (
       <div className="w-full">
         {label && (
@@ -23,13 +25,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           } ${className}`}
           {...props}
         >
-          {options.map((option) => (
+          {children || options?.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
         {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+        {helpText && !error && <p className="mt-1 text-sm text-gray-500">{helpText}</p>}
       </div>
     );
   }
