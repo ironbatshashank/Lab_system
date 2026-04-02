@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab System</title>
+    <script>
+      // GitHub Pages SPA redirect: encode the path into the query string
+      // so index.html can restore it for React Router.
+      var segmentCount = 1; // number of path segments in the repo name (/Lab_system/)
+      var location = window.location;
+      location.replace(
+        location.protocol +
+          '//' +
+          location.hostname +
+          (location.port ? ':' + location.port : '') +
+          location.pathname
+            .split('/')
+            .slice(0, 1 + segmentCount)
+            .join('/') +
+          '/?p=/' +
+          location.pathname
+            .slice(1)
+            .split('/')
+            .slice(segmentCount)
+            .join('/') +
+          (location.search ? '&q=' + location.search.slice(1) : '') +
+          location.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
