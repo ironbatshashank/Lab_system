@@ -13,7 +13,7 @@
           var path = p.get('p');
           if (path) {
             var newSearch = p.get('q') ? '?' + p.get('q') : '';
-            history.replaceState(null, null, '/Lab_system/' + path + newSearch + location.hash);
+            history.replaceState(null, null, path + newSearch + location.hash);
           }
         }
       })();
