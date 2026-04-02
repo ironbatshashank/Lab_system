@@ -6,7 +6,7 @@
     <script>
       // GitHub Pages SPA redirect: encode the path into the query string
       // so index.html can restore it for React Router.
-      var segmentCount = 1; // number of path segments in the repo name (/Lab_system/)
+      var segmentCount = 0; // 0 for custom domain at root
       var location = window.location;
       location.replace(
         location.protocol +
