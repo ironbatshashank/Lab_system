@@ -5,6 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lab Experiment Workflow Management</title>
+    <script>
+      (function () {
+        var search = location.search;
+        if (search) {
+          var p = new URLSearchParams(search);
+          var path = p.get('p');
+          if (path) {
+            var newSearch = p.get('q') ? '?' + p.get('q') : '';
+            history.replaceState(null, null, '/Lab_system/' + path + newSearch + location.hash);
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
